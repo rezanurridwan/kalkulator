@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Digital Version</title>
+
+    <style>
+        .container {
+            background-color: antiquewhite;
+            width: 500px;
+            height: 600px;
+            margin: 0 auto;
+            padding: 5px;
+        }
+        .atas {
+            background-color: springgreen;
+            width: 400px;
+            height: 100px;
+            margin: 0 auto;
+            border-radius: 10px 10px 0 0;
+        }
+        h5 {
+            color: snow;
+            margin-right: 10px;
+        }
+        #angkaMasuk {
+            line-height: 100px;
+            text-align: right;
+            font-size: 30px;
+        }
+        table {
+            margin: 10px auto;
+            width: 400px;
+            height: 50px;
+            background-color: azure;
+        }
+        h3 {
+            text-align: center;
+            font-weight: bolder;
+            color: snow;
+        }
+        td {
+            background-color: rgb(52, 189, 148);
+            cursor: pointer;
+
+        }
+        td:hover {
+            background-color: springgreen;
+        }
+        td:active {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="atas">
+            <h5 id="angkaMasuk">0</h5>
+        </div>
+        <table  cellpadding="3" cellspacing="5">
+            <tbody>
+                <tr>
+                    <td id="r1-1" onclick="forclear()" colspan="2"><h3>Clear</h3></td>
+                    <td id="r1-2" value = "%"onclick="percent()"><h3>%</h3></td>
+                    <td id="r1-3" value = "/"onclick="fordisplay('/')"><h3>/</h3></td>
+                </tr>
+                <tr>
+                    <td id="r2-1" value = "7"onclick="fordisplay('7')"><h3>7</h3></td>
+                    <td id="r2-2" value = "8"onclick="fordisplay('8')"><h3>8</h3></td>
+                    <td id="r2-3" value = "9"onclick="fordisplay('9')"><h3>9</h3></td>
+                    <td id="r2-4" value = "X"onclick="fordisplay('*')"><h3>X</h3></td>
+                </tr>
+                <tr>
+                    <td id="r3-1" value = "4"onclick="fordisplay('4')"><h3>4</h3></td>
+                    <td id="r3-2" value = "5"onclick="fordisplay('5')"><h3>5</h3></td>
+                    <td id="r3-3" value = "6"onclick="fordisplay('6')"><h3>6</h3></td>
+                    <td id="r3-4" value = "-"onclick="fordisplay('-')"><h3>-</h3></td>
+                </tr>
+                <tr>
+                    <td id="r4-1" value = "1"onclick="fordisplay('1')"><h3>1</h3></td>
+                    <td id="r4-2" value = "2"onclick="fordisplay('2')"><h3>2</h3></td>
+                    <td id="r4-3" value = "3"onclick="fordisplay('3')"><h3>3</h3></td>
+                    <td id="r4-4" value = "+"onclick="fordisplay('+')"><h3>+</h3></td>
+                </tr>
+                <tr>
+                    <td colspan="2" id="r5-1" value = "0" onclick="fordisplay('0')"><h3>0</h3></td>
+                    <td id="r5-2" value = "."onclick="fordisplay('.')"><h3>.</h3></td>
+                    <td id="r5-3" value = "="onclick="solve()"><h3>=</h3></td>
+                </tr>
+            </tbody>
+    </table>
+        
+
+
+
+
+    <script>
+        function forclear() {
+            document.getElementById("angkaMasuk").innerHTML = "0";
+        }
+        function removeZero() {
+            const hapus = document.getElementById("angkaMasuk").innerHTML;
+            if (hapus == "0"){
+                hapus  = " "
+                document.getElementById("angkaMasuk").innerHTML = hapus;
+            }
+        }
+        function percent() {
+            const value = document.getElementById("angkaMasuk").innerHTML;
+            valuee = value / 100;
+            document.getElementById("angkaMasuk").innerHTML = valuee;   
+        }
+        function fordisplay(value) {
+            document.getElementById("angkaMasuk").innerHTML += value;
+            removeZero();
+        }
+        function solve () {
+            removeZero()
+            const equation = document.getElementById("angkaMasuk").innerHTML;
+            const solved = eval(equation);
+            document.getElementById("angkaMasuk").innerHTML = solved;
+        }
+
+
+    </script>
+    </div>
+</body>
+</html>
